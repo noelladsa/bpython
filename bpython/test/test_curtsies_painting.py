@@ -94,13 +94,13 @@ class TestCurtsiesPaintingSimple(CurtsiesPaintingTest):
         if config.supports_box_chars():
             screen = ['>>> an',
                       '┌───────────────────────┐',
-                      '│ and  any(             │',
+                      '│ and  armadillo        │',
                       '└───────────────────────┘',
                       'Welcome to bpython! Press <F1> f']
         else:
             screen = ['>>> an',
                       '+-----------------------+',
-                      '| and  any(             |',
+                      '| and  armadillo        |',
                       '+-----------------------+',
                       'Welcome to bpython! Press <F1> f']
         self.assert_paint_ignoring_formatting(screen, (0, 4))
@@ -533,7 +533,7 @@ class TestCurtsiesRewindRedraw(CurtsiesPaintingTest):
         self.assert_paint_ignoring_formatting(screen, (2, 4))
 
     def test_unhighlight_paren_bugs(self):
-        """two previous bugs, paren did't highlight until next render
+        """two previous bugs, paren didn't highlight until next render
         and paren didn't unhighlight until enter"""
         self.assertEqual(self.repl.rl_history.entries, [''])
         self.enter('(')
@@ -555,7 +555,7 @@ class TestCurtsiesRewindRedraw(CurtsiesPaintingTest):
         with output_to_repl(self.repl):
             self.repl.process_event(' ')
         screen = fsarray([cyan(">>> ")+yellow('('),
-                         green("... ")+yellow(')')+bold(cyan(" "))])
+                         green("... ")+green(')')+bold(cyan(" "))])
         self.assert_paint(screen, (1, 6))
 
     def send_key(self, key):
