@@ -117,8 +117,11 @@ class BaseCompletionType(object):
         raise NotImplementedError
 
     def locate(self, cursor_offset, line):
-        """Returns a start, stop, and word given a line and cursor, or None
-        if no target for this type of completion is found under the cursor"""
+        """Returns a tuple describing the word to complete.
+
+        The tuple is a start index, stop index, and word given a line and
+        cursor, or None if no target for this type of completion is found
+        under the cursor."""
         raise NotImplementedError
 
     def format(self, word):
